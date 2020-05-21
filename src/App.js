@@ -1,12 +1,30 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import createTheme from "@material-ui/core/styles/createMuiTheme";
 // Components
 import Navbar from "./components/Navbar";
 // Pages
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: "#607d8c",
+      main: "#8eacbc",
+      dark: "#34515f",
+    },
+    secondary: {
+      light: "#ffff6b",
+      main: "#fdd835",
+      dark: "#c6a700",
+    },
+  },
+});
 
 function App() {
   return (
