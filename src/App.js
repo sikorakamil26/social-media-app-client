@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 // Components
 import Navbar from "./components/Navbar";
@@ -13,32 +13,37 @@ import signup from "./pages/signup";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: "#607d8c",
-      main: "#8eacbc",
-      dark: "#34515f",
+      light: "#48a999",
+      main: "#00796b",
+      dark: "#004c40",
     },
     secondary: {
-      light: "#ffff6b",
-      main: "#fdd835",
-      dark: "#c6a700",
+      light: "#ffff8b",
+      main: "#ffee58",
+      dark: "#c9bc1f",
     },
+  },
+  typography: {
+    useNextVariants: true,
   },
 });
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Navbar />
-        <div className="container">
-          <Switch>
-            <Route exact path="/" component={home} />
-            <Route exact path="/login" component={login} />
-            <Route exact path="/signup" component={signup} />
-          </Switch>
-        </div>
-      </Router>
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <div className="App">
+        <Router>
+          <Navbar />
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={home} />
+              <Route exact path="/login" component={login} />
+              <Route exact path="/signup" component={signup} />
+            </Switch>
+          </div>
+        </Router>
+      </div>
+    </MuiThemeProvider>
   );
 }
 
