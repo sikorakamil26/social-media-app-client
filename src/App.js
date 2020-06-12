@@ -20,7 +20,6 @@ import signup from "./pages/signup";
 const theme = createMuiTheme(themeFile);
 
 let authenticated;
-
 const token = localStorage.FBIdToken;
 if (token) {
   const decodedToken = jwtDecode(token);
