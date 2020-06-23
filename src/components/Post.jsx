@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { likePost, unlikePost } from "../redux/actions/dataActions";
 import PropTypes from "prop-types";
 import MyButton from "../util/MyButton";
-
+import DeletePost from "./DeletePost";
 //Icons
 import ChatIcon from "@material-ui/icons/Chat";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -21,6 +21,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 
 const styles = {
   card: {
+    position: "relative",
     display: "flex",
     marginBottom: 20,
   },
@@ -68,7 +69,10 @@ class Post extends Component {
         likeCount,
         commentCount,
       },
-      user: { authenticated },
+      user: {
+        authenticated,
+        credentials: { handle },
+      },
     } = this.props;
 
     const likeButton = !authenticated ? (
@@ -87,6 +91,11 @@ class Post extends Component {
       </MyButton>
     );
 
+    const deleteButton =
+      authenticated && userHandle === handle ? (
+        <DeletePost postId={postId} />
+      ) : null;
+
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -103,6 +112,7 @@ class Post extends Component {
           >
             {userHandle}
           </Typography>
+          {deleteButton}
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}
           </Typography>
