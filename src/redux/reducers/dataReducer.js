@@ -5,6 +5,7 @@ import {
   LOADING_DATA,
   SET_POSTS,
   DELETE_POST,
+  ADD_POST,
 } from "../types";
 
 const initialState = {
@@ -33,6 +34,9 @@ export default function (state = initialState, action) {
         (post) => post.postId === action.payload.postId
       );
       state.posts[index] = action.payload;
+      if (state.post.postId === action.payload.postId) {
+        state.post = action.payload;
+      }
       return {
         ...state,
       };
@@ -42,6 +46,16 @@ export default function (state = initialState, action) {
       state.posts.splice(index, 1);
       return {
         ...state,
+      };
+    case ADD_POST:
+      return {
+        ...state,
+        posts: [action.payload, ...state.posts],
+      };
+    case SET_POST:
+      return {
+        ...state,
+        post: action.payload,
       };
     default:
       return state;
