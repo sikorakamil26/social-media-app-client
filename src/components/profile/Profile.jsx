@@ -10,9 +10,6 @@ import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import MuiLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import { Tooltip } from "@material-ui/core";
-
 //Icons material-ui/icons
 import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
@@ -22,8 +19,8 @@ import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 
 //Redux
 import { connect } from "react-redux";
-import { logoutUser, uploadImage } from "../redux/actions/userActions";
-import MyButton from "../util/MyButton";
+import { logoutUser, uploadImage } from "../../redux/actions/userActions";
+import MyButton from "../../util/MyButton";
 
 const styles = (theme) => ({
   paper: {
